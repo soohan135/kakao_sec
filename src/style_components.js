@@ -1,5 +1,18 @@
 import styled from "styled-components";
 
+export const Div_Main = styled.div`
+display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+`;
+
+export const Img_logo = styled.img`
+background-color: #f0e9d9;
+  text-align: center;
+  border-radius: 5px;
+`;
+
 export const Button = styled.button`
 background-color: #f0e9d9;
   border: 1px solid black;
