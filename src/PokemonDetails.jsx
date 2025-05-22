@@ -1,6 +1,6 @@
 import React from 'react';
-import './PokemonDetails.css'
 import { Link } from "react-router-dom";
+import { Button, Div_Details, Img_Details, H2_Details, P_Details, Type_and_Ability_Details } from './style_components';
 
 const PokemonDetails = ({ pokemon }) => {
 
@@ -10,20 +10,20 @@ const PokemonDetails = ({ pokemon }) => {
 
   const renderTypes = () => {
     return pokemon.types.map((type, index) => (
-      <span key={type.type.name} className="type">
+      <Type_and_Ability_Details key={type.type.name}>
         {type.type.korean_name}
         {index < pokemon.types.length - 1 ? ', ' : ''}
-      </span>
+      </Type_and_Ability_Details>
     ));
   };
 
 
   const renderAbilities = () => {
     return pokemon.abilities.map((ability, index) => (
-      <span key={ability.ability.name} className='ability'>
+      <Type_and_Ability_Details key={ability.ability.name}>
         {ability.ability.korean_name}
         {index < pokemon.abilities.length - 1 ? ', ' : ''}
-      </span>
+      </Type_and_Ability_Details>
     ));
   };
 
@@ -33,18 +33,18 @@ const PokemonDetails = ({ pokemon }) => {
   };
 
   return (
-    <div className='pokemon-details'>
-      <h2>{pokemon.korean_name} (#{pokemon.id})</h2>
-      <img src={pokemon.sprites.front_default} alt={pokemon.korean_name} />
-      <p>이름: {pokemon.korean_name}</p>
-      <p>키: {pokemon.height}</p>
-      <p>무게: {pokemon.weight}</p>
-      <p>속성: {renderTypes()}</p>
-      <p>특성: {renderAbilities()}</p>
+    <Div_Details>
+      <H2_Details>{pokemon.korean_name} (#{pokemon.id})</H2_Details>
+      <Img_Details src={pokemon.sprites.front_default} alt={pokemon.korean_name} />
+      <P_Details>이름: {pokemon.korean_name}</P_Details>
+      <P_Details>키: {pokemon.height}</P_Details>
+      <P_Details>무게: {pokemon.weight}</P_Details>
+      <P_Details>속성: {renderTypes()}</P_Details>
+      <P_Details>특성: {renderAbilities()}</P_Details>
       <Link to="/pokemon/dex">
-        <button>뒤로가기</button>
+        <Button>뒤로가기</Button>
       </Link>
-    </div>
+    </Div_Details>
   );
 };
 

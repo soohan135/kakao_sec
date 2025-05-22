@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { notifyStorageChange } from "./pokedexStorage";
-import "./pokedex.css";
+import { Button, Div_pokedex, Div_Pokemon } from "./style_components";
 
 const Dashboard = () => {
     const [poketmonDex, setpoketmonDex] = useState([]);
@@ -27,16 +28,18 @@ const Dashboard = () => {
     };
 
     return (
-        <div className="pokedex">
+        <Div_pokedex>
             {poketmonDex.map(pokemon => (
-                <div key={pokemon.id} className="pokemon">
-                    <img src={pokemon.sprites.front_default} alt={pokemon.korean_name} />
-                    <p>{pokemon.korean_name}</p>
-                    <p>도감번호: {pokemon.id}</p>
-                    <button onClick={() => handleRemove(pokemon.id)}>삭제</button>
-                </div>
+                <Div_Pokemon key={pokemon.id}>
+                    <Link to={`/pokemon/${pokemon.id}`}>
+                        <img src={pokemon.sprites.front_default} alt={pokemon.korean_name} />
+                        <p>{pokemon.korean_name}</p>
+                        <p>도감번호: {pokemon.id}</p>
+                    </Link>
+                    <Button onClick={() => handleRemove(pokemon.id)}>삭제</Button>
+                </Div_Pokemon>
             ))}
-        </div>
+        </Div_pokedex>
     );
 };
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { notifyStorageChange } from "./pokedexStorage";
-import "./pokedex.css";
+import { Button, Div_Pokemon, Card_Container } from "./style_components";
 
 const getStoredDex = () => {
     const stored = localStorage.getItem("poketmonDex");
@@ -41,18 +41,18 @@ const PokemonCard = ({ pokemonList }) => {
     };
 
     return (
-        <div className="container">
+        <Card_Container>
             {pokemonList.map((pokemon) => (
-                <div key={pokemon.id} className="pokemon">
+                <Div_Pokemon key={pokemon.id}>
                     <Link to={`/pokemon/${pokemon.id}`}>
                         <img src={pokemon.sprites.front_default} alt={pokemon.korean_name} />
                         <p>{pokemon.korean_name}</p>
                         <p>도감번호: {pokemon.id}</p>
                     </Link>
-                    <button onClick={() => handleAdd(pokemon)}>추가</button>
-                </div>
+                    <Button onClick={() => handleAdd(pokemon)}>추가</Button>
+                </Div_Pokemon>
             ))}
-        </div>
+        </Card_Container>
 
     );
 };
